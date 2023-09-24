@@ -6,6 +6,7 @@ function App() {
     <>
       <h1>Control de gastos</h1>
       <p>Hola que hace</p>
+      <p>desde desarrollo</p>
     </>
   )
 }
