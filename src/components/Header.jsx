@@ -11,11 +11,16 @@ const Header = ({
             <h1>
                 Planificador de gastos
             </h1>
-            <NuevoPresupuesto
-                presupuesto={presupuesto}
-                setPresupuesto={setPresupuesto}
-                setIsValidPresupuesto={setIsValidPresupuesto}
-            />
+            {isValidPresupuesto ? (
+                <p>Control Presupuesto</p>
+            ) : (
+                <NuevoPresupuesto
+                    presupuesto={presupuesto}
+                    setPresupuesto={setPresupuesto}
+                    setIsValidPresupuesto={setIsValidPresupuesto}
+                />
+            )}
+
         </header>
     )
 }
