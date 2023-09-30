@@ -16,10 +16,7 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
         // Calcular el porcentaje gastado
         const nuevoPorcentaje = (((presupuesto-totalDisponible) / presupuesto) * 100).toFixed(2)
 
-        setTimeout(() => {
-            setPorcentaje(nuevoPorcentaje)
-        }, 1000);
-        
+        setPorcentaje(nuevoPorcentaje)
 
         setDisponible(totalDisponible)
         setGastado(totalGastado)
@@ -40,8 +37,10 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
                     styles={buildStyles({
                         pathColor:'#3b82f6',
                         trailColor:'#F5F5F5',
-                        textColor: '#3b82f6'
+                        textColor: '#3b82f6',
+                        pathTransitionDuration: 2,
                     })}
+                    
                 />
             </div>
             <div className="contenido-presupuesto">
