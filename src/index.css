@@ -205,13 +205,16 @@ header h1 {
         text-align: left;
     }
 }
-.contenido-presupuesto p.negativo,
-.contenido-presupuesto p.negativo span {
-    color: red;
-}
 .contenido-presupuesto span {
     font-weight: 900;
     color: var(--azul);
+}
+.contenido-presupuesto span.content{
+    color: var(--gris-oscuro);
+    font-weight: 400;
+}
+span.negativo {
+    color: #DC2626;
 }
 .reset-app {
     border: none;
