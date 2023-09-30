@@ -47,7 +47,8 @@ const ControlPresupuesto = ({
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, deseo eliminarlo.'
+            confirmButtonText: 'Sí, deseo eliminarlo.',
+            padding:'3rem'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(

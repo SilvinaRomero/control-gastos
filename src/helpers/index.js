@@ -1,3 +1,4 @@
+
 export const generarId = () => {
     const random = Math.random().toString(36).substring(2);
     const fecha = Date.now().toString(36);
@@ -26,7 +27,10 @@ export const formatearFecha = (fecha) => {
         octubre: 'Octubre',
         noviembre: 'Noviembre',
         diciembre: 'Diciembre',
-      };
-      const nfModified = f.replace(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/gi, match => capitalizationMap[match.toLowerCase()]);
-      return nfModified;
+    };
+    const nfModified = f.replace(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/gi, match => capitalizationMap[match.toLowerCase()]);
+    return nfModified;
+}
+export const formatearCantidad = (cantidad) => {
+    return cantidad.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 }

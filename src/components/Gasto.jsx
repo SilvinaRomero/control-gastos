@@ -7,7 +7,7 @@ import {
 } from 'react-swipeable-list'
 import 'react-swipeable-list/dist/styles.css'
 // para usar el slide, se tienen que importar las funciones y css anteriores -> npm i prop-types
-import { formatearFecha } from "../helpers"
+import { formatearFecha,formatearCantidad } from "../helpers"
 
 import IconoAhorro from "../img/icono_ahorro.svg";
 import IconoCasa from "../img/icono_casa.svg";
@@ -33,9 +33,7 @@ const Gasto = ({ gasto,setGastoEditar,eliminarGasto }) => {
     const { nombre, cantidad, categoria, id, fecha } = gasto
 
 
-    const formatearCantidad = (cantidad) => {
-        return cantidad.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    }
+  
     const leadingActions = () => (
         <LeadingActions>
             <SwipeAction onClick={() => setGastoEditar(gasto)}>

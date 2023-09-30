@@ -333,6 +333,15 @@ main {
 .descripcion-gasto .fecha-gasto span {
     font-weight: 400;
 }
+.descripcion-gasto .subtotal {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--gris-oscuro);
+    padding-left: .5rem;;
+}
+.descripcion-gasto .subtotal span {
+    font-weight: 400;
+}
 
 .nuevo-gasto {
     position: fixed;
