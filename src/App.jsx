@@ -7,8 +7,12 @@ import { generarId } from './helpers';
 
 function App() {
 	// creamos state para presupuesto
-	const [gastos, SetGastos] = useState([]);
-	const [presupuesto, setPresupuesto] = useState(0);
+	const [gastos, SetGastos] = useState(
+		JSON.parse(localStorage.getItem('gastos')) ?? []
+	);
+	const [presupuesto, setPresupuesto] = useState(
+		Number(localStorage.getItem('presupuesto')) ?? 0
+	);
 	const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
 	const [modal, SetModal] = useState(false);
 	const [animarMmodal, SetAnimarModal] = useState(false);
@@ -24,6 +28,25 @@ function App() {
 
 		}
 	}, [gastoEditar])
+
+	useEffect(() => {
+		console.log(presupuesto)
+		// localStorage.setItem('presupuesto', JSON.stringify(presupuesto));
+		localStorage.setItem('presupuesto', presupuesto ?? 0);
+	}, [presupuesto])
+
+	useEffect(() => {
+		localStorage.setItem('gastos', JSON.stringify(gastos)) ?? [];
+	}, [gastos])
+
+	useEffect(()=>{
+		const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0;
+		// si carga de LocalStorage un presupuesto valido, entonces ya no se carga la vista de definir presupuesto
+		if(presupuestoLS > 0){
+			setIsValidPresupuesto(true);
+		}
+	},[]);
+	
 
 	const handleNuevoGasto = () => {
 		setGastoEditar({});
