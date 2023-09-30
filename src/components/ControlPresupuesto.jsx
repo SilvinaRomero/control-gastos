@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import Swal from 'sweetalert2'
 
-const ControlPresupuesto = ({ gastos, presupuesto }) => {
+const ControlPresupuesto = ({
+    gastos,
+    SetGastos,
+    presupuesto,
+    setPresupuesto,
+    setIsValidPresupuesto
+}) => {
 
     const [disponible, setDisponible] = useState(0);
     const [gastado, setGastado] = useState(0);
@@ -28,6 +35,32 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
         return cantidad.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
 
+    const handleResetearApp = () => {
+        Swal.fire({
+            title: 'Desea eliminar todo el presupuesto?',
+            text: "Esta acción es irreversible!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, deseo eliminarlo.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Swal.fire(
+                    'Presupuesto eliminado!',
+                    'La Aplicación se está iniciando',
+                    'success'
+                )
+                setTimeout(() => {
+                    SetGastos([])
+                    setPresupuesto(0)
+                    setIsValidPresupuesto(false)
+                }, 2500);
+            }
+        })
+    }
+
     return (
         <div className="contenedor-presupuesto contenedor sombra dos-columnas">
             <div>
@@ -44,6 +77,12 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
                 />
             </div>
             <div className="contenido-presupuesto">
+                <button
+                    className="reset-app"
+                    onClick={handleResetearApp}
+                >
+                    Resetar App
+                </button>
                 <p>
                     <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
                 </p>
