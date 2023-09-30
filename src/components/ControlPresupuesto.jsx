@@ -36,6 +36,10 @@ const ControlPresupuesto = ({
     }
 
     const handleResetearApp = () => {
+        const blurBackground = document.getElementById('blur-background');
+    
+        blurBackground.style.display = 'block';
+    
         Swal.fire({
             title: 'Desea eliminar todo el presupuesto?',
             text: "Esta acción es irreversible!",
@@ -46,20 +50,26 @@ const ControlPresupuesto = ({
             confirmButtonText: 'Sí, deseo eliminarlo.'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 Swal.fire(
                     'Presupuesto eliminado!',
                     'La Aplicación se está iniciando',
                     'success'
-                )
+                );
+    
                 setTimeout(() => {
-                    SetGastos([])
-                    setPresupuesto(0)
-                    setIsValidPresupuesto(false)
+                    SetGastos([]);
+                    setPresupuesto(0);
+                    setIsValidPresupuesto(false);
+    
+                    // Eliminar el desenfoque al fondo
+                    blurBackground.style.display = 'none';
                 }, 2500);
+            } else {
+                // En caso de que el usuario cancele, también elimina el desenfoque.
+                blurBackground.style.display = 'none';
             }
-        })
-    }
+        });
+    };
 
     return (
         <div className="contenedor-presupuesto contenedor sombra dos-columnas">
