@@ -29,6 +29,22 @@ const Modal = ({
         }
     }, [])
 
+    useEffect(()=>{
+        if (isNaN(cantidad)) {
+            document.querySelector("#cantidad").value = 0;
+            setMensaje('Escriba una cantidad númerica')
+            setTimeout(() => {
+                cleanMessage()
+            }, 1000);
+        }else{
+            if (Object.keys(gastoEditar).length > 0) {
+                document.querySelector("#cantidad").value=gastoEditar.cantidad;
+            }else{
+                setCantidad(document.querySelector("#cantidad").value)
+            }
+        }
+    },[cantidad])
+
     const ocultarModal = () => {
         SetAnimarModal(false)
         setGastoEditar({})
@@ -53,6 +69,7 @@ const Modal = ({
             setMensaje('')
         }, 500);
     }
+
 
     return (
         <div className="modal">
@@ -82,11 +99,10 @@ const Modal = ({
                     <label htmlFor="cantidad">Cantidad</label>
                     <input
                         id='cantidad'
-                        type="number"
-                        min={1}
+                        type="text"
                         placeholder='Añade la cantidad del gasto; en. 300'
                         value={cantidad}
-                        onChange={e => { setCantidad(Number(e.target.value)); cleanMessage() }}
+                        onChange={e => { setCantidad(e.target.value) }}
                     />
                 </div>
                 <div className='campo'>

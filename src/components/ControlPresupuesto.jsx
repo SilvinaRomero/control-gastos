@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Swal from 'sweetalert2'
+import { formatearCantidad } from "../helpers";
 
 const ControlPresupuesto = ({
     gastos,
@@ -18,7 +19,9 @@ const ControlPresupuesto = ({
 
     useEffect(() => {
         // reduce recibe dos argumenteos, el acumulado y el objeto  de cada iteracion del array
-        const totalGastado = gastos.reduce((acumulado, gasto) => gasto.cantidad + acumulado, 0)
+        
+        const totalGastado = gastos.reduce((acumulado, gasto) => parseFloat(gasto.cantidad) + acumulado, 0)
+        
         const totalDisponible = presupuesto - totalGastado;
 
         // Calcular el porcentaje gastado
@@ -31,10 +34,6 @@ const ControlPresupuesto = ({
 
 
     }, [gastos])
-
-    const formatearCantidad = (cantidad) => {
-        return cantidad.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    }
 
     const handleResetearApp = () => {
         const blurBackground = document.getElementById('blur-background');

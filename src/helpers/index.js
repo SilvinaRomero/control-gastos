@@ -32,5 +32,5 @@ export const formatearFecha = (fecha) => {
     return nfModified;
 }
 export const formatearCantidad = (cantidad) => {
-    return cantidad.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return parseFloat(cantidad).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 }
