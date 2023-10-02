@@ -110,6 +110,7 @@ function App() {
 				setPresupuesto={setPresupuesto}
 				isValidPresupuesto={isValidPresupuesto}
 				setIsValidPresupuesto={setIsValidPresupuesto}
+				setFiltro={setFiltro}
 			/>
 			{isValidPresupuesto && (
 				<>

@@ -8,7 +8,8 @@ const ControlPresupuesto = ({
     SetGastos,
     presupuesto,
     setPresupuesto,
-    setIsValidPresupuesto
+    setIsValidPresupuesto,
+    setFiltro
 }) => {
 
     const [disponible, setDisponible] = useState(0);
@@ -37,9 +38,9 @@ const ControlPresupuesto = ({
 
     const handleResetearApp = () => {
         const blurBackground = document.getElementById('blur-background');
-    
+
         blurBackground.style.display = 'block';
-    
+
         Swal.fire({
             title: 'Desea eliminar todo el presupuesto?',
             text: "Esta acción es irreversible!",
@@ -48,7 +49,7 @@ const ControlPresupuesto = ({
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sí, deseo eliminarlo.',
-            padding:'3rem'
+            padding: '3rem'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
@@ -56,12 +57,12 @@ const ControlPresupuesto = ({
                     'La Aplicación se está iniciando',
                     'success'
                 );
-    
+
                 setTimeout(() => {
                     SetGastos([]);
                     setPresupuesto(0);
                     setIsValidPresupuesto(false);
-    
+
                     // Eliminar el desenfoque al fondo
                     blurBackground.style.display = 'none';
                 }, 2500);
@@ -70,6 +71,9 @@ const ControlPresupuesto = ({
                 blurBackground.style.display = 'none';
             }
         });
+        // Reseteamos Filtro para comenzar con el select en el defaultvalue
+        setFiltro("");
+
     };
 
     return (
