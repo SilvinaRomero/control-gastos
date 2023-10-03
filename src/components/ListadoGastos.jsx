@@ -17,7 +17,7 @@ const ListadoGastos = ({
 
     const calcularSubtotal = () => {
         if (gastosFiltrados.length > 0) {
-            const subTotal = gastosFiltrados.reduce((accumulator, currentValue) => accumulator + currentValue.cantidad, 0);
+            const subTotal = gastosFiltrados.reduce((accumulator, currentValue) => accumulator + parseFloat(currentValue.cantidad), 0);
             return formatearCantidad(subTotal)
         }
     }
