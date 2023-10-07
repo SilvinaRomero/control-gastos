@@ -29,21 +29,21 @@ const Modal = ({
         }
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (isNaN(cantidad)) {
             document.querySelector("#cantidad").value = 0;
             setMensaje('Escriba una cantidad númerica')
             setTimeout(() => {
                 cleanMessage()
             }, 1000);
-        }else{
+        } else {
             if (Object.keys(gastoEditar).length > 0) {
-                document.querySelector("#cantidad").value=gastoEditar.cantidad;
-            }else{
+                document.querySelector("#cantidad").value = gastoEditar.cantidad;
+            } else {
                 setCantidad(document.querySelector("#cantidad").value)
             }
         }
-    },[cantidad])
+    }, [cantidad])
 
     const ocultarModal = () => {
         SetAnimarModal(false)
@@ -84,45 +84,47 @@ const Modal = ({
                 <legend>{gastoEditar.id ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
 
                 {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
+                <div className='pform'>
 
-                <div className='campo'>
-                    <label htmlFor="nombre">Nombre Gasto</label>
-                    <input
-                        id='nombre'
-                        type="text"
-                        placeholder='Añade el nombre de Gasto'
-                        value={nombre}
-                        onChange={e => { setNombre(e.target.value); cleanMessage() }}
-                    />
+                    <div className='campo'>
+                        <label htmlFor="nombre">Nombre Gasto</label>
+                        <input
+                            id='nombre'
+                            type="text"
+                            placeholder='Añade el nombre de Gasto'
+                            value={nombre}
+                            onChange={e => { setNombre(e.target.value); cleanMessage() }}
+                        />
+                    </div>
+                    <div className='campo'>
+                        <label htmlFor="cantidad">Cantidad</label>
+                        <input
+                            id='cantidad'
+                            type="text"
+                            placeholder='Añade la cantidad del gasto; en. 300'
+                            value={cantidad}
+                            onChange={e => { setCantidad(e.target.value) }}
+                        />
+                    </div>
+                    <div className='campo'>
+                        <label htmlFor="categoria">Categoría</label>
+                        <select
+                            id="categoria"
+                            value={categoria}
+                            onChange={e => { setCategoria(e.target.value); cleanMessage() }}
+                        >
+                            <option value="">--- Seleccione ---</option>
+                            <option value="ahorro">Ahorro</option>
+                            <option value="alimentos">Alimentos</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="varios">Gastos Varios</option>
+                            <option value="ocio">Ocio</option>
+                            <option value="salud">Salud</option>
+                            <option value="suscripciones">Suscripciones</option>
+                        </select>
+                    </div>
+                    <input type="submit" value={gastoEditar.id ? 'Editar Gasto' : 'Añadir Gasto'} />
                 </div>
-                <div className='campo'>
-                    <label htmlFor="cantidad">Cantidad</label>
-                    <input
-                        id='cantidad'
-                        type="text"
-                        placeholder='Añade la cantidad del gasto; en. 300'
-                        value={cantidad}
-                        onChange={e => { setCantidad(e.target.value) }}
-                    />
-                </div>
-                <div className='campo'>
-                    <label htmlFor="categoria">Categoría</label>
-                    <select
-                        id="categoria"
-                        value={categoria}
-                        onChange={e => { setCategoria(e.target.value); cleanMessage() }}
-                    >
-                        <option value="">--- Seleccione ---</option>
-                        <option value="ahorro">Ahorro</option>
-                        <option value="alimentos">Alimentos</option>
-                        <option value="hogar">Hogar</option>
-                        <option value="varios">Gastos Varios</option>
-                        <option value="ocio">Ocio</option>
-                        <option value="salud">Salud</option>
-                        <option value="suscripciones">Suscripciones</option>
-                    </select>
-                </div>
-                <input type="submit" value={gastoEditar.id ? 'Editar Gasto' : 'Añadir Gasto'} />
             </form>
         </div>
     )
