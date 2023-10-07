@@ -72,6 +72,7 @@ header h1 {
         width: 100%;
     }
     .modal .formulario .campo, .modal .formulario [type="submit"]{
+        margin:0;
         width: 80%;
         margin:auto 0;
         margin-bottom: 30px;
