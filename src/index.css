@@ -64,8 +64,14 @@ header h1 {
 @media (min-width: 768px) {
     .formulario {
         padding: 5rem 0;
-        width: 60rem;
+        width: 80%;
     }
+}
+@media (max-width: 767px) {
+    .nuevo-presupuesto,.filtros.sombra.contenedor,#filtro{
+        width: 100%;
+    }
+    
 }
 .formulario legend {
     font-size: 3.6rem;
