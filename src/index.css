@@ -307,6 +307,12 @@ main {
     margin-bottom: 2rem;
     width: 100%;
 }
+@media(max-width: 767px){
+    .gasto.sombra, .gasto.sombra .contenido-gasto{
+        flex-direction: column;
+        text-align: center;
+    }
+}
 
 .cantidad-gasto {
     font-size: 2.4rem;
