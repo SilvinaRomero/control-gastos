@@ -80,7 +80,7 @@ const Modal = ({
                     onClick={ocultarModal}
                 />
             </div>
-            <form className={`formulario ${animarMmodal ? "animar" : "cerrar"}`} onSubmit={handleSubmit}>
+            <form id="formModal" className={`formulario ${animarMmodal ? "animar" : "cerrar"}`} onSubmit={handleSubmit}>
                 <legend>{gastoEditar.id ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
 
                 {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
